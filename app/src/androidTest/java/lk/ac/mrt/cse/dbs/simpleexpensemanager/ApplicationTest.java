@@ -16,6 +16,7 @@
 
 package lk.ac.mrt.cse.dbs.simpleexpensemanager;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import android.content.Context;
@@ -29,6 +30,8 @@ import java.util.List;
 
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistentDemoExpenseManager;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.exception.InvalidAccountException;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Account;
 
 public class ApplicationTest {
     private ExpenseManager expenseManager;
@@ -48,5 +51,15 @@ public class ApplicationTest {
 //        expenseManager.addAccount("12345A", "Yoda Bank", "Anakin Skywalker", 10000.0);
 //        List<String> accountNumbers2 = expenseManager.getAccountNumbersList();
 //        assertTrue(accountNumbers2.contains("12345A"));
+    }
+
+    @Test
+    public void testGetAccount() throws InvalidAccountException {
+        Account account = expenseManager.getAccountsDAO().getAccount("111222");
+        assertEquals("111222", account.getAccountNo());
+        assertEquals("Kasun Kalhara", account.getAccountHolderName());
+        assertEquals("Hatton National Bank", account.getBankName());
+//        assertEquals(200000.00, account.getBalance());
+
     }
 }
