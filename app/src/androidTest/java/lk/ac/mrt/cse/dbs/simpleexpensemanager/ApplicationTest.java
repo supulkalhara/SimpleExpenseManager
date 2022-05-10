@@ -16,6 +16,8 @@
 
 package lk.ac.mrt.cse.dbs.simpleexpensemanager;
 
+import static org.junit.Assert.assertTrue;
+
 import android.content.Context;
 
 import androidx.test.core.app.ApplicationProvider;
@@ -23,11 +25,13 @@ import androidx.test.core.app.ApplicationProvider;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.ExpenseManager;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.PersistentDemoExpenseManager;
 
 public class ApplicationTest {
-    private static ExpenseManager expenseManager;
+    private ExpenseManager expenseManager;
 
     @Before
     public void setUp() {
@@ -36,5 +40,9 @@ public class ApplicationTest {
     }
 
     @Test
-    public void nulL() {}
+    public void testAddAccount() {
+        expenseManager.addAccount("111222", "Hatton National Bank", "Kasun Kalhara", 200000.00);
+        List<String> accountNumbers = expenseManager.getAccountNumbersList();
+        assertTrue(accountNumbers.contains("111222"));
+    }
 }
