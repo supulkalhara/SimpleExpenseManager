@@ -59,7 +59,7 @@ public class ApplicationTest {
         assertEquals("111222", account.getAccountNo());
         assertEquals("Kasun Kalhara", account.getAccountHolderName());
         assertEquals("Hatton National Bank", account.getBankName());
-//        assertEquals(200000.00, account.getBalance());
+        assertEquals(200000.00, account.getBalance(),0.0);
 
     }
 }
