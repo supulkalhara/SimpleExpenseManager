@@ -55,11 +55,11 @@ public class ApplicationTest {
 
     @Test
     public void testGetAccount() throws InvalidAccountException {
+        expenseManager.addAccount("111222", "Hatton National Bank", "Kasun Kalhara", 200000.00);
         Account account = expenseManager.getAccountsDAO().getAccount("111222");
         assertEquals("111222", account.getAccountNo());
         assertEquals("Kasun Kalhara", account.getAccountHolderName());
         assertEquals("Hatton National Bank", account.getBankName());
         assertEquals(200000.00, account.getBalance(),0.0);
-
     }
 }
